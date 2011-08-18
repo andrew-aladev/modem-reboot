@@ -1,0 +1,14 @@
+Problems:
+1) Byfly is a belorussian provider. It likes to reboot its core routes twice a week
+2) D-Link 2500U has no option to automatic reboot while interfaces became unreachable. And no event available to cutomize it
+3) After rebooting D-Link 2500U will not ask your connected devices by ARP. It will use cached from the previous session ARP table. Thats why bug "ARP status Incomplete" will take place after about 20 minutes after reboot
+
+Solution (may be not very good but works):
+1) Ask each hour modem is google.com available
+2) If google.com is not available reboot modem
+3) Wait about 5 minutes (with guarantee)
+4) restart network-manager service
+
+Add to your crontab (with root rights)
+sudo crontab -e
+0 * * * * /path_to/check >> /path_to/modem.log 2>&1

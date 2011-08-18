@@ -1,0 +1,8 @@
+#!/bin/bash
+echo "-----------------------------------------------------------------------"
+date
+dir="$( cd -P "$( dirname "$0" )" && pwd )"
+expect $dir/reboot
+sleep 300
+su -c "/etc/init.d/network-manager restart"
+echo  ""
